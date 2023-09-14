@@ -1,6 +1,7 @@
 interface User {
   id: number;
   name: string;
+  email: string;
 }
 
 const UsersPage = async () => {
@@ -13,11 +14,24 @@ const UsersPage = async () => {
   return (
     <>
       <h1>UsersPage</h1>
-      <ul>
-        {users.map(user => (
-          <li key={user.id}>{user.name}</li>
-        ))}
-      </ul>
+      <div className="overflow-x-auto border border-gray-300 rounded-lg">
+        <table className="table table-pin-rows table-pin-cols">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map(user => (
+              <tr className="hover" key={user.id}>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 };
